@@ -19,8 +19,6 @@ public class BaseController {
 	private static final String VIEW_INDEX = "index";
 	private final static org.slf4j.Logger logger = LoggerFactory.getLogger(BaseController.class);
 
-	@Autowired
-	AtWithinAspect atWithinAspect;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String welcome(ModelMap model) {
@@ -28,7 +26,7 @@ public class BaseController {
 		model.addAttribute("message", "Welcome");
 		model.addAttribute("counter", ++counter);
 		logger.debug("[welcome] counter : {}", counter);
-		logger.info(atWithinAspect.getOrder()+"===================================");
+		logger.info("===================================");
  
 		// Spring uses InternalResourceViewResolver and return back index.jsp
 		return VIEW_INDEX;

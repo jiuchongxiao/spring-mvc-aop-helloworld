@@ -1,9 +1,12 @@
 package com.zenika.controller.atwithin;
 
+import com.zenika.controller.MagicExistsCondition;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
 
@@ -21,6 +24,8 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
+//@ConditionalOnProperty(name = "aopStatus", havingValue = "true")
+@Conditional(MagicExistsCondition.class)
 public class AtWithinAspect implements Ordered {
 	@Pointcut(value="execution(* com.zenika.controller.*.*(..))")
 	public void pointCut(){
